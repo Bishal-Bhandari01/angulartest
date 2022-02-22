@@ -1,0 +1,32 @@
+<app-home></app-home>
+<div class="container">
+  <h1 style="font-weight: bold;" class="header mt-5">Table</h1>
+  <table border="1px solid" style="text-align: center;width: 40rem;" class="form mt-4">
+    <thead class="bg-primary" >
+      <tr>
+        <th>S.N</th>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Class</th>
+        <th>Age</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of tableData; let i = index">
+        <td>{{i+1}}</td>
+        <td>{{data.id}}</td>
+        <td>{{data.name}}</td>
+        <td>{{data.address}}</td>
+        <td>{{data.class}}</td>
+        <td>{{data.age}}</td>
+        <td><input type="button" (click)="onNavigateById(data.id,data.name,data.address,data.age)" value="edit"/>
+          <input type="button" (click)="onclass(data.id,data.name,data.address,data.age)" value="Class View" class="m-3" /></td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn bg-primary mt-3 fs-5 fw-bold" (click)="onbackbtn()">Back</button>
+</div>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,54 @@
+<router-outlet></router-outlet>
+<app-home></app-home>
+<div class="container mt-4">
+  <form
+   class="Form"
+   #form="ngForm"
+   (ngSubmit)="submit(form)">
+    <div class="mb-3">
+      <label>First Name <span class="text-danger">*</span></label>
+      <input #name="ngModel" type="text" name="firstname" class="form-control" style="border-radius: 60px;" ngModel required>
+
+      <span *ngIf="name.touched && name.invalid && lname.pristine" class="info-msg text-danger">
+        First name is required
+      </span>
+
+    </div>
+    <div class="mb-3">
+      <label for="lastame">Last Name <span class="text-danger">*</span></label>
+      <input #lname="ngModel" type="text" name="lastName" class="form-control" style="border-radius: 60px;" ngModel required>
+      <span *ngIf="lname.touched && lname.invalid && lname.pristine" class="info-msg text-danger">
+        Last name is required
+      </span>
+    </div>
+    <div class="mb-3">
+      <label for="email">Email <span class="text-danger">*</span></label>
+      <input #email="ngModel" type="email" name="email" class="form-control" style="border-radius: 60px;" ngModel required>
+      <span class="form-text">Email must contain '@','.com' & should be valid email.</span><br>
+      <span *ngIf="email.touched && email.invalid && lname.pristine" class="info-msg text-danger">
+        Email is required
+      </span>
+
+    </div>
+    <div class="mb-3">
+      <label for="password">Password <span class="text-danger">*</span></label>
+      <input #password="ngModel" type="password" id="password" name="password" style="border-radius: 60px;" class="form-control" ngModel required>
+      <span class="form-text">Password must contain:
+        <ol>
+          <li>Password should be start with uppercase letter</li>
+          <li>Password must contain one number and one special character.</li>
+          <li>Password must 8-13 character.</li>
+        </ol>
+      </span>
+      <span *ngIf="password.touched && password.invalid && lname.pristine" class="info-msg text-danger">
+        Password is required
+      </span>
+
+    </div>
+    <button
+    type="submit"
+    class="btn btn-primary"
+    style="border-radius: 60px;"
+    [disabled]="form.invalid">Submit</button>
+  </form>
+</div>

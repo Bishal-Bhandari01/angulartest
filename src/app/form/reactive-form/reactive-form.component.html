@@ -1,0 +1,64 @@
+<app-home></app-home>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="reg">
+        Register
+      </div>
+      <form [formGroup]="Form">
+        <div class="div">
+          <div class="name">
+            <label class="mt-2 fs-5">First Name <span class="text-danger">*</span></label>
+            <input type="name" data-toggle="tooltip" data-placement="bottom" title="First Name" formControlName="firstname" name="fname" class="form-control" placeholder="Name">
+            <span *ngIf="forms['firstname'].dirty||forms['firstname'].touched && forms['firstname'].invalid" class="info-msg text-danger">
+              <small *ngIf="forms['firstname'].errors && forms['firstname'].errors?.['required']">
+                First Name is required
+              </small>
+              <small *ngIf="forms['firstname'].errors && forms['firstname'].errors?.['maxlength']">Email should me 20 character long</small>
+              <small *ngIf="forms['firstname'].errors && forms['firstname'].errors?.['minlength']">Email should me 2 character short</small>
+
+            </span>
+          </div>
+          <div class="lastname">
+            <label class="mt-2 fs-5">Last Name <span class="text-danger">*</span></label>
+            <input type="name" data-toggle="tooltip" data-placement="bottom" title="Last Name" formControlName="lastname" name="lname" class="form-control" placeholder="Last Name">
+            <span *ngIf="forms['lastname'].dirty||forms['lastname'].touched && forms['lastname'].invalid" class="info-msg text-danger">
+              <small *ngIf="forms['lastname'].errors && forms['lastname'].errors?.['required']">
+                Last Name is required
+              </small>
+              <small *ngIf="forms['lastname'].errors && forms['lastname'].errors?.['maxlength']">Email should me 20 character long</small>
+              <small *ngIf="forms['lastname'].errors && forms['lastname'].errors?.['minlength']">Email should me 2 character short</small>
+            </span>
+          </div>
+          <div class="email">
+            <label class="mt-2 fs-5">Email <span class="text-danger">*</span></label>
+            <input type="email" data-toggle="tooltip" data-placement="bottom" title="Email" formControlName="email" name="email" class="form-control" placeholder="Email">
+            <span *ngIf="forms['email'].dirty||forms['email'].touched && forms['email'].invalid" class="info-msg text-danger">
+              <small *ngIf="forms['email'].errors && forms['email'].errors?.['required']">
+                Email is required
+              </small>
+              <small *ngIf="forms['email'].errors && forms['email'].errors?.['maxlength']">Email should me 20 character long</small>
+              <small *ngIf="forms['email'].errors && forms['email'].errors?.['minlength']">Email should me 2 character short</small>
+            </span>
+          </div>
+          <div class="password">
+            <label class="mt-2 fs-5">Password <span class="text-danger">*</span></label>
+            <input type="password" data-toggle="tooltip" data-placement="bottom" title="Password" formControlName="password" name="password" class="form-control" placeholder="Password">
+            <span *ngIf="forms['password'].dirty||forms['password'].touched && forms['password'].invalid" class="info-msg text-danger">
+              <small *ngIf="forms['password'].errors && forms['password'].errors?.['required']">
+                Password is required
+              </small>
+
+              <small *ngIf="forms['password'].errors && forms['password'].errors?.['maxlength']">password is too long</small>
+              <small *ngIf="forms['password'].errors && forms['password'].errors?.['minlength']">Password is too short</small>
+            </span>
+          </div>
+        </div>
+        <div class="button">
+          <button class="submit" data-toggle="tooltip" data-placement="bottom" title="Submit" (click)="onSubmitForm(Form)"
+          [disabled]="Form.invalid">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
