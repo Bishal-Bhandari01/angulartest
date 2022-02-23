@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CreateuserComponent } from './createuser/createuser.component';
 import { DetailviewComponent } from './detailview/detailview.component';
 import { ReactiveformComponent } from './form/reactive-form/reactive-form.component';
 import { HomeComponent } from './home/home.component';
 import { TableComponent } from './table/table.component';
 import { TemplateFormComponent } from './template-form/template-form.component';
+import { UserComponent } from './user/user.component';
+import { UserserviceService } from './userservice.service';
 
 const routes: Routes = [
   {
@@ -43,6 +46,14 @@ const routes: Routes = [
   {
     path: 'template-form',
     component: TemplateFormComponent
+  },
+  {
+    path: 'user',
+    component: UserComponent
+  },
+  {
+    path:'createuser',
+    component: CreateuserComponent
   }
 ];
 

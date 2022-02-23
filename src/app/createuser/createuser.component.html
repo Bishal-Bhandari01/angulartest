@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="reg fs-3 fw-bold">
+        Add User
+      </div>
+      <form [formGroup]="userforms">
+        <div class="div">
+          <div class="name">
+            <label class="mt-2 fs-5">Id <span class="text-danger">*</span></label>
+            <input type="number" formControlName="id" name="id" class="form-control" placeholder="id">
+          </div>
+          <div class="name">
+            <label class="mt-2 fs-5">Name <span class="text-danger">*</span></label>
+            <input type="name" formControlName="name" name="name" class="form-control" placeholder="Name">
+          </div>
+          <div class="lastname">
+            <label class="mt-2 fs-5">Address <span class="text-danger">*</span></label>
+            <input type="text" formControlName="address" name="address" class="form-control" placeholder="Address">
+          </div>
+          <div class="email">
+            <label class="mt-2 fs-5">Class <span class="text-danger">*</span></label>
+            <input type="number" formControlName="class" name="class" class="form-control" placeholder="Class Id">
+
+          </div>
+          <div class="password">
+            <label class="mt-2 fs-5">Age <span class="text-danger">*</span></label>
+            <input type="number" formControlName="age" name="age" class="form-control" placeholder="Age">
+          </div>
+        </div>
+        <div class="button">
+          <button class="submit btn-primary mt-3" style="margin-right: 60px;
+          border-radius: 30px;
+          width:120px">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

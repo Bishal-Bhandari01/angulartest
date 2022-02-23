@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { faPen, faTrash } from '@fortawesome/.free-solid-svg-icons-QihXpG5Y';
 
 @Component({
   selector: 'app-table',
@@ -8,8 +9,11 @@ import { Router } from '@angular/router';
 })
 export class TableComponent implements OnInit {
 
+  fapen = faPen;
+  fatrash=faTrash;
+
   tableData=[{
-    id:'001',
+    id: '001',
     name: 'Bishal',
     address: 'NPJ',
     class:'010',
@@ -28,6 +32,13 @@ export class TableComponent implements OnInit {
     address: 'USA',
     class:'002',
     age: '21'
+  },
+  {
+    id:"004",
+    name: 'Narayan',
+    address: 'france',
+    class:'016',
+    age: '23'
   }]
 
   constructor(
@@ -35,11 +46,12 @@ export class TableComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
   }
 
   onNavigateById(value: string, name: string, useraddress:string, userage:string){
-    this.router.navigate(['/detailview',value],{
-      queryParams:{username: name,address: useraddress, age: userage}
+    this.router.navigate(['/user'],{
+      queryParams:{id:value,username: name,address: useraddress, age: userage}
     });
   }
 
@@ -51,6 +63,10 @@ export class TableComponent implements OnInit {
     this.router.navigate(['/detailview',value,'class',value],{
       queryParams: {name:name,useraddress:useraddress,age:uage}
     })
+  }
+
+  delete(data:any){
+    this.tableData.splice(data,1);
   }
 
 }

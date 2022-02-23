@@ -15,6 +15,8 @@ import { TableComponent } from './table/table.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TemplateFormComponent } from './template-form/template-form.component';
 import { UserComponent } from './user/user.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CreateuserComponent } from './createuser/createuser.component';
 
 @NgModule({
   declarations: [
@@ -29,13 +31,15 @@ import { UserComponent } from './user/user.component';
     ReactiveformComponent,
     TableComponent,
     TemplateFormComponent,
-    UserComponent
+    UserComponent,
+    CreateuserComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
