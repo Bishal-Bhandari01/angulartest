@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { TableComponent } from './table/table.component';
 import { TemplateFormComponent } from './template-form/template-form.component';
 import { UserComponent } from './user/user.component';
+import { UsereditComponent } from './useredit/useredit.component';
 import { UserserviceService } from './userservice.service';
 
 const routes: Routes = [
@@ -54,6 +55,10 @@ const routes: Routes = [
   {
     path:'createuser',
     component: CreateuserComponent
+  },
+  {
+    path:'edituser',
+    component: UsereditComponent
   }
 ];
 

@@ -17,6 +17,7 @@ import { TemplateFormComponent } from './template-form/template-form.component';
 import { UserComponent } from './user/user.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CreateuserComponent } from './createuser/createuser.component';
+import { UsereditComponent } from './useredit/useredit.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { CreateuserComponent } from './createuser/createuser.component';
     TableComponent,
     TemplateFormComponent,
     UserComponent,
-    CreateuserComponent
+    CreateuserComponent,
+    UsereditComponent
   ],
   imports: [
     BrowserModule,

@@ -1,16 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { faPen, faTrash } from '@fortawesome/.free-solid-svg-icons-QihXpG5Y';
-
+import { faPen, faTrash, faEye } from '@fortawesome/.free-solid-svg-icons-QihXpG5Y';
+import { UserserviceService } from '../userservice.service';
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.scss']
+  styleUrls: ['./table.component.scss'],
+  providers: [UserserviceService]
 })
 export class TableComponent implements OnInit {
 
   fapen = faPen;
   fatrash=faTrash;
+  faeye=faEye;
+
+  users:{
+    id: string,
+    name: string,
+    address: string,
+    class: string,
+    age: string
+  }[]=[];
 
   tableData=[{
     id: '001',
@@ -43,17 +53,19 @@ export class TableComponent implements OnInit {
 
   constructor(
     private router: Router,
+    // private userServiceservice: UserserviceService
   ) { }
 
   ngOnInit(): void {
-
+    // this.users = this.userServiceservice.users;
   }
 
   onNavigateById(value: string, name: string, useraddress:string, userage:string){
-    this.router.navigate(['/user'],{
+    this.router.navigate(['/detailview'],{
       queryParams:{id:value,username: name,address: useraddress, age: userage}
     });
   }
+
 
   onbackbtn(){
     this.router.navigate(['/home'])
@@ -67,6 +79,10 @@ export class TableComponent implements OnInit {
 
   delete(data:any){
     this.tableData.splice(data,1);
+  }
+
+  edit(){
+    this.router.navigate(['/edituser'])
   }
 
 }
