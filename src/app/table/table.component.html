@@ -1,26 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#" routerLink="/table">Data Table</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/reactive-form">Reactive Forms</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0);" routerLink="/template-form">Template Forms</a>
-        </li>
-      </ul>
-      <button type="button" class="btn btn-info text-white"routerLink="/createuser">Add User</button>
-    </div>
-  </div>
-</nav>
 
+<div class="container">
+  <button type="button" class="btn btn-info text-white mt-4 fl-right"routerLink="/home/createuser">Add User</button>
 <table border="1px solid" style="text-align: center;width: 100%;" class="form mt-4">
   <thead class="bg-primary" >
     <tr>
@@ -57,5 +37,4 @@
 </table>
 
 <button class="btn bg-primary mt-3 fs-5 fw-bold" (click)="onbackbtn()">Back</button>
-
-<router-outlet></router-outlet>
+</div>

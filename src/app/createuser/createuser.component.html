@@ -6,32 +6,28 @@
       </div>
       <form [formGroup]="userforms">
         <div class="div">
-          <div class="name">
-            <label class="mt-2 fs-5">Id <span class="text-danger">*</span></label>
-            <input type="number" formControlName="id" name="id" class="form-control" placeholder="id">
-          </div>
-          <div class="name">
+          <div class="uname">
             <label class="mt-2 fs-5">Name <span class="text-danger">*</span></label>
-            <input type="name" formControlName="name" name="name" class="form-control" placeholder="Name">
+            <input type="text" formControlName="name" name="name" class="form-control" placeholder="Name">
           </div>
-          <div class="lastname">
-            <label class="mt-2 fs-5">Address <span class="text-danger">*</span></label>
-            <input type="text" formControlName="address" name="address" class="form-control" placeholder="Address">
+          <div class="uemail">
+            <label class="mt-2 fs-5">Email <span class="text-danger">*</span></label>
+            <input type="email" formControlName="email" name="email" class="form-control" placeholder="Email">
           </div>
-          <div class="email">
-            <label class="mt-2 fs-5">Class <span class="text-danger">*</span></label>
-            <input type="number" formControlName="class" name="class" class="form-control" placeholder="Class Id">
+          <div class="upassword">
+            <label class="mt-2 fs-5">Password <span class="text-danger">*</span></label>
+            <input type="password" formControlName="password" name="class" class="form-control" placeholder="Password">
 
           </div>
-          <div class="password">
-            <label class="mt-2 fs-5">Age <span class="text-danger">*</span></label>
-            <input type="number" formControlName="age" name="age" class="form-control" placeholder="Age">
+          <div class="umobilenumber">
+            <label class="mt-2 fs-5">Mobile Number <span class="text-danger">*</span></label>
+            <input type="number" formControlName="mobileNumber" name="mNumber" class="form-control" placeholder="Mobile Number">
           </div>
         </div>
         <div class="button">
           <button class="submit btn-primary mt-3" style="margin-right: 60px;
           border-radius: 30px;
-          width:120px">Submit</button>
+          width:120px" (click)="Adduser(userforms.value)">Add</button>
         </div>
       </form>
     </div>

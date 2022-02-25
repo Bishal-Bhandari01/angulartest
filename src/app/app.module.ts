@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import{ HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -18,6 +18,7 @@ import { UserComponent } from './user/user.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CreateuserComponent } from './createuser/createuser.component';
 import { UsereditComponent } from './useredit/useredit.component';
+import { NocontentfoundComponent } from './http/nocontentfound/nocontentfound.component';
 
 @NgModule({
   declarations: [
@@ -34,14 +35,16 @@ import { UsereditComponent } from './useredit/useredit.component';
     TemplateFormComponent,
     UserComponent,
     CreateuserComponent,
-    UsereditComponent
+    UsereditComponent,
+    NocontentfoundComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
