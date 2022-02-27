@@ -6,37 +6,37 @@
         <div class="reg fw-bold fs-2 mx-5">
           Edit User
         </div>
-        <form>
+        <form [formGroup]="editform">
           <div class="div">
-            <div class="name">
-              <label class="mt-2 fs-5">Id <span class="text-danger">*</span></label>
-              <input type="number" formControlName="id" name="id" class="form-control" placeholder="id">
+            <div class="id">
+              <p class="text-black">ID: <span>{{routetable}}</span></p>
             </div>
             <div class="name">
               <label class="mt-2 fs-5">Name <span class="text-danger">*</span></label>
               <input type="name" formControlName="name" name="name" class="form-control" placeholder="Name">
             </div>
-            <div class="lastname">
-              <label class="mt-2 fs-5">Address <span class="text-danger">*</span></label>
-              <input type="text" formControlName="address" name="address" class="form-control" placeholder="Address">
-            </div>
             <div class="email">
-              <label class="mt-2 fs-5">Class <span class="text-danger">*</span></label>
-              <input type="number" formControlName="class" name="class" class="form-control" placeholder="Class">
+              <label class="mt-2 fs-5">Email <span class="text-danger">*</span></label>
+              <input type="text" formControlName="email" name="email" class="form-control" placeholder="Email">
             </div>
             <div class="password">
-              <label class="mt-2 fs-5">Age <span class="text-danger">*</span></label>
-              <input type="number" formControlName="age" name="age" class="form-control" placeholder="Age">
+              <label class="mt-2 fs-5">Password <span class="text-danger">*</span></label>
+              <input type="password" formControlName="password" name="password" class="form-control" placeholder="Password">
+            </div>
+            <div class="mobilenumber">
+              <label class="mt-2 fs-5">Mobile Number <span class="text-danger">*</span></label>
+              <input type="number" formControlName="mobileNumber" name="password" class="form-control" placeholder="Mobile Number">
             </div>
           </div>
 
 
     <button
     type="submit"
+    (click)="edit(routetable,editform.value)"
     class="btn btn-primary"
     style="border-radius: 60px;
     margin-top: 30px;
     width: 120px;
-    margin-left: 30px;">Edit</button>
+    margin-left: 30px;">Save</button>
   </form>
 </div>

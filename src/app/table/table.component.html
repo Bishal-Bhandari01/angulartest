@@ -1,34 +1,34 @@
 
 <div class="container">
   <button type="button" class="btn btn-info text-white mt-4 fl-right"routerLink="/home/createuser">Add User</button>
-<table border="1px solid" style="text-align: center;width: 100%;" class="form mt-4">
+<table border="1px solid" style="text-align: center;width: 100%;" class="table mt-4">
   <thead class="bg-primary" >
     <tr>
       <th>S.N</th>
       <th>Id</th>
       <th>Name</th>
-      <th>Address</th>
-      <th>Class</th>
-      <th>Age</th>
+      <th>Email</th>
+      <th>password</th>
+      <th>Mobile Number</th>
       <th>Action</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let data of tableData; let i = index">
+    <tr *ngFor="let data of tableData; let i=index;">
       <td>{{i+1}}</td>
       <td>{{data.id}}</td>
       <td>{{data.name}}</td>
-      <td>{{data.address}}</td>
-      <td>{{data.class}}</td>
-      <td>{{data.age}}</td>
+      <td>{{data.email}}</td>
+      <td>{{data.password}}</td>
+      <td>{{data.mobileNumber}}</td>
       <td>
-        <button (click)="edit()" class="text-info" style="width:30px;height:30px;border:0;border-radius:60px;">
+        <button (click)="edit(data.id)" class="text-info" style="width:30px;height:30px;border:0;border-radius:60px;">
           <fa-icon [icon]="fapen"></fa-icon>
         </button>
-        <button type="button" (click)="delete(data)" class="m-3 text-danger" style="width: 30px;height: 30px;border-radius:60px;border: 0;">
+        <button type="button" (click)="delete(data.id)" class="m-3 text-danger" style="width: 30px;height: 30px;border-radius:60px;border: 0;">
           <fa-icon [icon]="fatrash"></fa-icon>
         </button>
-        <button type="button" (click)="onclass(data.id,data.name,data.address,data.age)" class="m-3 text-danger" style="width: 30px;height: 30px;border-radius:60px;border: 0;">
+        <button type="button" (click)="onclass(data.name,data.email,data.password,data.mobileNumber)" class="m-3 text-danger" style="width: 30px;height: 30px;border-radius:60px;border: 0;">
           <fa-icon [icon]="faeye"></fa-icon>
         </button>
       </td>
