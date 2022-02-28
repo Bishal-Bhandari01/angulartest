@@ -44,6 +44,9 @@ export class UsereditComponent implements OnInit {
     this.userservice.put(routetable,edits).subscribe(
       (response) => {
         console.log(response);
+      },
+      error =>{
+        console.error(error);
       }
     )
   }

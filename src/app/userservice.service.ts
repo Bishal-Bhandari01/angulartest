@@ -23,6 +23,10 @@ export class UserserviceService {
     return this.http.get<any>(this.baseUrl.concat(this.api));
   }
 
+  listuserbyid(): Observable<any> {
+    return this.http.get<any>(this.baseUrl.concat(this.api));
+  }
+
   delete(id:any): Observable<any>{
     return this.http.delete<any>(this.baseUrl.concat(this.api)+"/"+id);
   }

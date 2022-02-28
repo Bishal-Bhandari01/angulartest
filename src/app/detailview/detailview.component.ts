@@ -1,29 +1,36 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { UserserviceService } from '../userservice.service';
 
 @Component({
   selector: 'app-detailview',
   templateUrl: './detailview.component.html',
-  styleUrls: ['./detailview.component.scss']
+  styleUrls: ['./detailview.component.scss'],
+  providers: [UserserviceService]
 })
 export class DetailviewComponent implements OnInit {
 
-  userdetail = {
-    id:'001',
-    name: 'Bishal',
-    address: 'NPJ',
-    age: '21'
-  }
+  userdetail: any = [];
 
   constructor(
-    // private router: Router,
+    private userservice: UserserviceService
   ) {
     // this.name=this.router.getCurrentNavigation().extras.state;
    }
 
   ngOnInit(): void {
+    this.listalluser();
   }
-  name='';
-  address='';
-  age='';
+
+  listalluser() {
+    this.userservice.listuserbyid().subscribe(
+      (response) => {
+        console.log(response);
+        this.userdetail = response.users;
+      },
+      (error) => {
+        console.error(error);
+      }
+    )
+  }
+
 }

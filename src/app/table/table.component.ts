@@ -53,9 +53,9 @@ export class TableComponent implements OnInit {
     this.router.navigate(['/home'])
   }
 
-  onclass(value: string, name: string, useraddress: string,uage: string){
-    this.router.navigate(['/detailview',value,'class',value],{
-      queryParams: {name:name,useraddress:useraddress,age:uage}
+  onclass(value:string,name: string, email: string, mobileNumber: string){
+    this.router.navigate(['/home/detailview'],{
+      queryParams: {id:value,name:name,email:email,mobileNumber:mobileNumber}
     })
   }
 
