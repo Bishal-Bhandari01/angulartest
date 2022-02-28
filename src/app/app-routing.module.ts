@@ -35,7 +35,7 @@ const routes: Routes = [
       //   component: HomeComponent
       // },
       {
-        path:'detailview',
+        path:'detailview/:id',
         component: DetailviewComponent
       },
       {

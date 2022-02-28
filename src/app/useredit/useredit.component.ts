@@ -12,7 +12,7 @@ export class UsereditComponent implements OnInit {
 
   editform: FormGroup = new FormGroup({});
 
-  routetable:string='';
+  routetable:any={};
 
   constructor(
     private router: ActivatedRoute,
@@ -34,8 +34,8 @@ export class UsereditComponent implements OnInit {
   initform(): void {
     this.editform = this.forms.group({
       name:[undefined],
-      email:[undefined],
       password:[undefined],
+      email:[undefined],
       mobileNumber:[undefined]
     })
   }

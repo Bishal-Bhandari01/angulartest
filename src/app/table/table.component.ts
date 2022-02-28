@@ -54,16 +54,18 @@ export class TableComponent implements OnInit {
   }
 
   onclass(value:string,name: string, email: string, mobileNumber: string){
-    this.router.navigate(['/home/detailview'],{
-      queryParams: {id:value,name:name,email:email,mobileNumber:mobileNumber}
+    this.router.navigate(['/home/detailview'+"/"+value],{
+      queryParams: {name:name,email:email,mobileNumber:mobileNumber}
     })
   }
 
   delete(id:string){
     this.userServiceservice.delete(id).subscribe(
       (respose:any) =>{
-        console.log(respose);
-        // this.tableData.splice(value,1);
+        if(confirm("Are you sure you want to delete.")==true){
+          console.log(respose);
+          this.listUsers();
+        };
       },
       error =>{
         console.error(error);

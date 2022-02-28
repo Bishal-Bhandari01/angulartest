@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { UserserviceService } from '../userservice.service';
 
 @Component({
@@ -9,28 +10,20 @@ import { UserserviceService } from '../userservice.service';
 })
 export class DetailviewComponent implements OnInit {
 
-  userdetail: any = [];
+  userdetailid:any= {};
+  userdetail:any= '';
 
   constructor(
-    private userservice: UserserviceService
-  ) {
-    // this.name=this.router.getCurrentNavigation().extras.state;
-   }
+    private router:ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.listalluser();
-  }
-
-  listalluser() {
-    this.userservice.listuserbyid().subscribe(
-      (response) => {
-        console.log(response);
-        this.userdetail = response.users;
-      },
-      (error) => {
-        console.error(error);
-      }
-    )
+    this.router.params.subscribe(res => {
+      this.userdetailid = res['id'];
+    })
+    this.router.queryParams.subscribe((params) => {
+      this.userdetail = params;
+    })
   }
 
 }
