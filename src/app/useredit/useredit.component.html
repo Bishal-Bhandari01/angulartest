@@ -1,7 +1,7 @@
 
 <div class="container mt-4">
   <div class="container">
-    <div class="row">
+    <div class="row mb-3">
       <div class="col-sm-12">
         <div class="reg fw-bold fs-2 mx-5">
           Edit User
@@ -11,25 +11,84 @@
             <div class="name">
               <label class="mt-2 fs-5">Name <span class="text-danger">*</span></label>
               <input type="name" formControlName="name" name="name" class="form-control" placeholder="Name">
+              <span *ngIf="form['name'].dirty||form['name'].touched && form['name'].invalid" class="info-msg text-danger">
+                <small *ngIf="form['name'].errors && form['name'].errors?.['required']">
+                  Name is required
+                </small>
+
+                <small *ngIf="form['name'].errors && form['name'].errors?.['maxlength']">Name is too long</small>
+                <small *ngIf="form['name'].errors && form['name'].errors?.['minlength']">Name is too short</small>
+              </span>
             </div>
             <div class="email">
               <label class="mt-2 fs-5">Email <span class="text-danger">*</span></label>
               <input type="text" formControlName="email" name="email" class="form-control" placeholder="Email">
+              <span *ngIf="form['email'].dirty||form['email'].touched && form['email'].invalid" class="info-msg text-danger">
+                <small *ngIf="form['email'].errors && form['email'].errors?.['required']">
+                  Email is required
+                </small>
+
+                <small *ngIf="form['email'].errors && form['email'].errors?.['maxlength']">Email is too long</small>
+                <small *ngIf="form['email'].errors && form['email'].errors?.['minlength']">Email is too short</small>
+              </span>
             </div>
             <div class="password">
               <label class="mt-2 fs-5">Password <span class="text-danger">*</span></label>
               <input type="password" formControlName="password" name="password" class="form-control" placeholder="Password">
+              <span *ngIf="form['password'].dirty||form['password'].touched && form['password'].invalid" class="info-msg text-danger">
+                <small *ngIf="form['password'].errors && form['password'].errors?.['required']">
+                  Password is required
+                </small>
+
+                <small *ngIf="form['password'].errors && form['password'].errors?.['maxlength']">Password is too long</small>
+                <small *ngIf="form['password'].errors && form['password'].errors?.['minlength']">Password is too short</small>
+              </span>
+            </div>
+            <div class="DOB">
+              <label class="mt-2 fs-5">DOB <span class="text-danger">*</span></label>
+              <input type="date" formControlName="dob" name="dob" class="form-control" id="dob" placeholder="Date of Birth" required>
+            </div>
+            <div class="age">
+              <label class="mt-2 fs-5">Age</label>
+              <input type="number" formControlName="age" readonly name="mNumber" class="form-control"
+              >
             </div>
             <div class="mobilenumber">
               <label class="mt-2 fs-5">Mobile Number <span class="text-danger">*</span></label>
               <input type="number" formControlName="mobileNumber" name="password" class="form-control" placeholder="Mobile Number">
+              <span *ngIf="form['mobileNumber'].dirty||form['mobileNumber'].touched && form['mobileNumber'].invalid" class="info-msg text-danger">
+                <small *ngIf="form['mobileNumber'].errors && form['mobileNumber'].errors?.['required']">
+                  Mobile Number is required
+                </small>
+
+                <small *ngIf="form['mobileNumber'].errors && form['mobileNumber'].errors?.['maxlength']">Mobile Number is too long</small>
+                <small *ngIf="form['mobileNumber'].errors && form['mobileNumber'].errors?.['minlength']">Mobile Number is too short</small>
+              </span>
             </div>
+            <ng-container formArrayName="contacts">
+              <div class="row mb-3">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="fs-5 mt-2">Contact Number: <span class="text-danger">*</span> </label>
+                    <input type="number" name="contact" id="contact" formControlName="mobileNumber" placeholder="Contact Number" class="form-control" />
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="fs-5 mt-2">Contact Email: <span class="text-danger">*</span> </label>
+                  <input type="email" name="email" id="email" formControlName="email" placeholder="Contact Email" class="form-control" />
+                </div>
+              </div>
+
+              </div>
+            </ng-container>
           </div>
 
 
     <button
     type="submit"
-    (click)="edit(routetable,editform.value)"
+    (click)="edit(editform.value)"
     class="btn btn-primary"
     style="border-radius: 60px;
     margin-top: 30px;

@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row">
+  <div class="row mb-5">
     <div class="col-sm-12">
       <div class="reg fs-3 fw-bold">
         Add User
@@ -9,26 +9,72 @@
           <div class="uname">
             <label class="mt-2 fs-5">Name <span class="text-danger">*</span></label>
             <input type="text" formControlName="name" name="name" class="form-control" placeholder="Name">
+            <span *ngIf="forms['name'].dirty||forms['name'].touched && forms['name'].invalid" class="info-msg text-danger">
+              <small *ngIf="forms['name'].errors && forms['name'].errors?.['required']">
+                Name is required
+              </small>
+            </span>
           </div>
           <div class="uemail">
             <label class="mt-2 fs-5">Email <span class="text-danger">*</span></label>
             <input type="email" formControlName="email" name="email" class="form-control" placeholder="Email">
+            <span *ngIf="forms['email'].dirty||forms['email'].touched && forms['email'].invalid" class="info-msg text-danger">
+              <small *ngIf="forms['email'].errors && forms['email'].errors?.['required']">
+                Email is required
+              </small>
+            </span>
           </div>
           <div class="upassword">
             <label class="mt-2 fs-5">Password <span class="text-danger">*</span></label>
             <input type="password" formControlName="password" name="class" class="form-control" placeholder="Password">
-
+            <span *ngIf="forms['password'].dirty||forms['password'].touched && forms['password'].invalid" class="info-msg text-danger">
+              <small *ngIf="forms['password'].errors && forms['password'].errors?.['required']">
+                Password is required
+              </small>
+            </span>
+          </div>
+          <div class="DOB">
+            <label class="mt-2 fs-5">DOB <span class="text-danger">*</span></label>
+            <input type="date" formControlName="dob" name="dob" class="form-control" id="dob" placeholder="Date of Birth" required
+            (change)="convertDateToAge()">
+          </div>
+          <div class="age">
+            <label class="mt-2 fs-5">Age</label>
+            <input type="number" readonly name="age" class="form-control" formControlName="age">
           </div>
           <div class="umobilenumber">
             <label class="mt-2 fs-5">Mobile Number <span class="text-danger">*</span></label>
             <input type="number" formControlName="mobileNumber" name="mNumber" class="form-control" placeholder="Mobile Number">
+            <span *ngIf="forms['mobileNumber'].dirty||forms['mobileNumber'].touched && forms['mobileNumber'].invalid" class="info-msg text-danger">
+              <small *ngIf="forms['mobileNumber'].errors && forms['mobileNumber'].errors?.['required']">
+                Mobile Number is required
+              </small>
+            </span>
           </div>
+          <ng-container formArrayName="contacts">
+            <div class="row mb-3">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="fs-5 mt-2">Contact Number: <span class="text-danger">*</span> </label>
+                  <input type="number" name="mobileNumber" id="mobileNumber" formControlName="mobileNumber" placeholder="Mobile Number" class="form-control" />
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label class="fs-5 mt-2">Contact Email: <span class="text-danger">*</span> </label>
+                <input type="email" name="email" id="email" formControlName="email" placeholder="Contact Email" class="form-control" />
+              </div>
+            </div>
+
+            </div>
+          </ng-container>
         </div>
         <div class="button">
-          <button class="submit btn-primary mt-3" style="margin-right: 60px;
+          <button class="submit btn-primary mt-3"
+          style="margin-right: 60px;
           border-radius: 30px;
-          width:120px" (click)="Adduser(userforms.value)"
-          >Add</button>
+          width:120px" (click)="Adduser(userforms.value)">Add</button>
         </div>
       </form>
     </div>

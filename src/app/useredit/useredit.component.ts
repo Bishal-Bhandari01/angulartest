@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { UserResponseModel } from '../Models/userResponse.model';
 import { UserserviceService } from '../userservice.service';
 
 @Component({
@@ -14,11 +15,22 @@ export class UsereditComponent implements OnInit {
 
   routetable:any={};
 
+  user: UserResponseModel = {
+    id: undefined,
+    name: undefined,
+    password: undefined,
+    email: undefined,
+    mobileNumber: undefined,
+    dob: undefined,
+    contacts: []
+  };
+
+
   constructor(
     private router: ActivatedRoute,
     private forms:FormBuilder,
     private userservice: UserserviceService
-  ) { }
+    ) { }
 
   ngOnInit(): void {
     this.initform();
@@ -27,28 +39,40 @@ export class UsereditComponent implements OnInit {
     })
   }
 
+  // initContacts(){
+  //   (this.editform.get('contact') as FormArray).push() {
+
+  //   }
+  // }
+
   get form():{ [key: string]: AbstractControl}{
     return this.editform.controls;
   }
 
   initform(): void {
     this.editform = this.forms.group({
-      name:[undefined],
-      password:[undefined],
-      email:[undefined],
-      mobileNumber:[undefined]
+      name:[this.user.name,undefined, Validators.required],
+      password:[this.user.password,undefined, Validators.required],
+      dob:[this.user.dob,undefined, Validators.required],
+      age:[undefined, Validators.required],
+      email:[this.user.email,undefined, Validators.required],
+      mobileNumber:[this.user.mobileNumber,undefined, Validators.required]
     })
   }
 
-  edit(routetable:string,edits:any){
-    this.userservice.put(routetable,edits).subscribe(
-      (response) => {
-        console.log(response);
-      },
-      error =>{
-        console.error(error);
-      }
-    )
+
+  edit(edits:any){
+    if(this.editform.valid){
+      this.userservice.updateUser(this.routetable,edits).subscribe(
+        (response) => {
+          console.log(response);
+          this.editform.reset();
+        },
+        error =>{
+          console.error(error);
+        }
+      )
+    }
   }
 
 }

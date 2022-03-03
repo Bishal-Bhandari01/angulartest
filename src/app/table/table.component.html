@@ -8,6 +8,7 @@
       <th>Id</th>
       <th>Name</th>
       <th>Email</th>
+      <th>DOB</th>
       <th>password</th>
       <th>Mobile Number</th>
       <th>Action</th>
@@ -19,14 +20,14 @@
       <td>{{data.id}}</td>
       <td>{{data.name}}</td>
       <td>{{data.email}}</td>
+      <td>{{data.dob}}</td>
       <td>{{data.password}}</td>
       <td>{{data.mobileNumber}}</td>
       <td>
         <button (click)="edit(data.id)" class="text-info" style="width:30px;height:30px;border:0;border-radius:60px;">
           <fa-icon [icon]="fapen"></fa-icon>
         </button>
-        <button type="button" (click)="delete(data.id)" class="m-3 text-danger" style="width: 30px;height: 30px;border-radius:60px;border: 0;"
-        onclick="confirm()">
+        <button type="button" (click)="delete(data.id)" class="m-3 text-danger" style="width: 30px;height: 30px;border-radius:60px;border: 0;">
           <fa-icon [icon]="fatrash"></fa-icon>
         </button>
         <button type="button" (click)="onclass(data.id,data.name,data.email,data.mobileNumber)" class="m-3 text-danger" style="width: 30px;height: 30px;border-radius:60px;border: 0;">

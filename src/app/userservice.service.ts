@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { UserResponseModel } from './Models/userResponse.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,25 +16,25 @@ export class UserserviceService {
     private http: HttpClient
   ) { }
 
-  adduser(data:any): Observable<any> {
-    return this.http.post<any>(this.baseUrl.concat(this.api), data);
+  adduser(data:any): Observable<UserResponseModel> {
+    return this.http.post<UserResponseModel>(this.baseUrl.concat(this.api), data);
   }
 
-  listusers(): Observable<any>{
-    return this.http.get<any>(this.baseUrl.concat(this.api));
+  listusers(): Observable<UserResponseModel>{
+    return this.http.get<UserResponseModel>(this.baseUrl.concat(this.api));
   }
 
-  delete(id:any): Observable<any>{
-    return this.http.delete<any>(this.baseUrl.concat(this.api)+"/"+id);
+  delete(id:any): Observable<UserResponseModel>{
+    return this.http.delete<UserResponseModel>(this.baseUrl.concat(this.api)+"/"+id);
   }
 
-  userbyid(id:any): Observable<any>{
-    return this.http.get<any>(this.baseUrl.concat(this.api)+"/"+id);
+  userbyid(id:any): Observable<UserResponseModel>{
+    return this.http.get<UserResponseModel>(this.baseUrl.concat(this.api)+"/"+id);
   }
 
-  put(id:any,body:any):Observable<any>{
+  updateUser(id:any,body:any):Observable<UserResponseModel>{
     const update = this.baseUrl.concat(this.api)+"/"+id;
-    return this.http.put<any>(update,body);
+    return this.http.put<UserResponseModel>(update,body);
   }
 
 }

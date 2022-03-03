@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { faPen, faTrash, faEye } from '@fortawesome/.free-solid-svg-icons-QihXpG5Y';
+import { faPen, faTrash, faEye } from '@fortawesome/free-solid-svg-icons';
 import { UserserviceService } from '../userservice.service';
 @Component({
   selector: 'app-table',
@@ -14,20 +14,6 @@ export class TableComponent implements OnInit {
   fatrash=faTrash;
   faeye=faEye;
 
-  // users:{
-  //   id: string,
-  //   name: string,
-  //   address: string,
-  //   class: string,
-  //   age: string
-  // }[]=[];
-
-  // tableData:[{
-  //   name: string,
-  //   email: string,
-
-  // }]
-
   tableData:any = [];
 
 
@@ -37,9 +23,7 @@ export class TableComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.users = this.userServiceservice.users;
     this.listUsers();
-    // this.tableData = this.listUsers();
   }
 
   onNavigateById(value: string, name: string, useraddress:string, userage:string){
@@ -54,23 +38,23 @@ export class TableComponent implements OnInit {
   }
 
   onclass(value:string,name: string, email: string, mobileNumber: string){
-    this.router.navigate(['/home/detailview'+"/"+value],{
+    this.router.navigate(['/home/detailview'+value],{
       queryParams: {name:name,email:email,mobileNumber:mobileNumber}
     })
   }
 
   delete(id:string){
+    if(confirm("Are you sure you want to delete.")){
     this.userServiceservice.delete(id).subscribe(
       (respose:any) =>{
-        if(confirm("Are you sure you want to delete.")==true){
           console.log(respose);
           this.listUsers();
-        };
-      },
-      error =>{
-        console.error(error);
-      }
-    )
+        },
+        error =>{
+          console.error(error);
+        }
+      )
+    }
   }
 
   edit(value:string){

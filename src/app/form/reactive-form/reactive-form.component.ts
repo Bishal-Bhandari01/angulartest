@@ -32,6 +32,7 @@ export class ReactiveformComponent implements OnInit {
     // this.submitted=true;
     if(this.Form.valid){
       console.log(form.value);
+      this.Form.reset();
     }
 
   }

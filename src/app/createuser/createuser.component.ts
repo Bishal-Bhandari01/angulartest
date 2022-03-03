@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserserviceService } from '../userservice.service';
 
 @Component({
@@ -13,35 +13,66 @@ export class CreateuserComponent implements OnInit {
 
   constructor(
     private form: FormBuilder,
-    private userserviceService: UserserviceService
+    private userserviceService: UserserviceService,
   ) { }
 
   ngOnInit(): void {
-    this.initform();
+    this.initform()
   }
 
   get forms(): { [key: string]: AbstractControl } {
     return this.userforms.controls;
   }
 
+  convertDateToAge() {
+    var date = this.userforms.value.dob;
+    var year = new Date(date);
+    var timeDiff = Math.abs(Date.now() - year.getTime());
+    let age = Math.floor((timeDiff/(1000*3600*24*365)))
+    this.userforms.patchValue({age:age})
+  }
+
   initform() {
     this.userforms = this.form.group({
-      name:[undefined],
-      email:[undefined],
-      password:[undefined],
-      mobileNumber:[undefined]
+      name:[undefined, [Validators.required, Validators.maxLength(10),Validators.minLength(2)]],
+      email:[undefined,Validators.required],
+      dob:[undefined,Validators.required],
+      age:[undefined,Validators.required],
+      password:[undefined,Validators.required],
+      mobileNumber:[undefined,Validators.required],
+      contacts: new FormArray([])
     });
+    this.initContacts;
+  }
+
+  get getContact(): FormArray {
+    return (this.userforms.get('contacts') as FormArray);
+  }
+
+  initContacts(){
+    (this.userforms.get('contacts') as FormArray).push(
+      this.form.group({
+        mobileNumber:[undefined],
+        email:[undefined],
+        id:[undefined],
+        userid:[undefined]
+      })
+    )
   }
 
   Adduser(user:any){
-    this.userserviceService.adduser(user).subscribe(
-      (response:any) =>{
-        console.log(response);
-      },
-      error =>{
-        console.error(error);
-      }
-    );
+    if(this.userforms.valid){
+      this.userserviceService.adduser(user).subscribe(
+        (response:any) =>{
+          console.log(response);
+          this.userforms.reset();
+        },
+        error =>{
+          console.error(error);
+        }
+      );
+    }
   }
 
 }
+

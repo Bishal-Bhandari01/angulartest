@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { UserResponseModel } from '../Models/userResponse.model';
 import { UserserviceService } from '../userservice.service';
 
 @Component({
@@ -10,19 +11,28 @@ import { UserserviceService } from '../userservice.service';
 })
 export class DetailviewComponent implements OnInit {
 
-  userdetailid:any= {};
-  userdetail:any= '';
+  id:any;
+  userdetail:UserResponseModel= {
+    id: undefined,
+    name: undefined,
+    email: undefined,
+    mobileNumber: undefined,
+    password: undefined,
+    dob: undefined,
+    contacts: []
+  }
 
   constructor(
-    private router:ActivatedRoute
+    private router:ActivatedRoute,
+    private userservice: UserserviceService
   ) {}
 
   ngOnInit(): void {
     this.router.params.subscribe(res => {
-      this.userdetailid = res['id'];
+      this.id = res['id'];
     })
-    this.router.queryParams.subscribe((params) => {
-      this.userdetail = params;
+    this.userservice.userbyid(this.id).subscribe((param)=>{
+      this.userdetail = param;
     })
   }
 

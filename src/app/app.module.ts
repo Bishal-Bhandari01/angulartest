@@ -19,6 +19,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CreateuserComponent } from './createuser/createuser.component';
 import { UsereditComponent } from './useredit/useredit.component';
 import { NocontentfoundComponent } from './http/nocontentfound/nocontentfound.component';
+// import { UserResponseModelComponent } from './Models/user-response-model/user-response-model.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { NocontentfoundComponent } from './http/nocontentfound/nocontentfound.co
     UserComponent,
     CreateuserComponent,
     UsereditComponent,
-    NocontentfoundComponent
+    NocontentfoundComponent,
+    // UserResponseModelComponent
   ],
   imports: [
     BrowserModule,

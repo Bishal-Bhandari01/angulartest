@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'app-template-form',
@@ -16,6 +15,7 @@ export class TemplateFormComponent implements OnInit {
 
   submit(form:any){
     console.log(form.value);
+    form.reset();
   }
 
 }
