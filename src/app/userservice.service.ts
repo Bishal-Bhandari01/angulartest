@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { UserResponseModel } from './Models/userResponse.model';
+import { UserResponseModel } from './Models/UserResponse.model';
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +35,9 @@ export class UserserviceService {
   updateUser(id:any,body:any):Observable<UserResponseModel>{
     const update = this.baseUrl.concat(this.api)+"/"+id;
     return this.http.put<UserResponseModel>(update,body);
+  }
+  getUserDetailById(id: any): Observable<UserResponseModel> {
+    return this.http.get<UserResponseModel>(this.baseUrl.concat(this.api).concat('/' + id));
   }
 
 }

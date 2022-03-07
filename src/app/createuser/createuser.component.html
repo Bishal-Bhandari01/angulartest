@@ -39,7 +39,7 @@
             (change)="convertDateToAge()">
           </div>
           <div class="age">
-            <label class="mt-2 fs-5">Age</label>
+            <label class="mt-2 fs-5">Age{{getContact.length}}</label>
             <input type="number" readonly name="age" class="form-control" formControlName="age">
           </div>
           <div class="umobilenumber">
@@ -51,30 +51,39 @@
               </small>
             </span>
           </div>
-          <ng-container formArrayName="contacts">
-            <div class="row mb-3">
+          <ng-container formArrayName="contacts" *ngFor="let data of getContact?.controls; let i=index;">
+            <div class="row mb-3" [formGroupName]="i">
               <div class="col-sm-6">
                 <div class="form-group">
                   <label class="fs-5 mt-2">Contact Number: <span class="text-danger">*</span> </label>
-                  <input type="number" name="mobileNumber" id="mobileNumber" formControlName="mobileNumber" placeholder="Mobile Number" class="form-control" />
+                  <input type="number" formControlName="mobileNumber" placeholder="Mobile Number" class="form-control" />
+                </div>
               </div>
-            </div>
 
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label class="fs-5 mt-2">Contact Email: <span class="text-danger">*</span> </label>
-                <input type="email" name="email" id="email" formControlName="email" placeholder="Contact Email" class="form-control" />
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="fs-5 mt-2">Contact Email: <span class="text-danger">*</span> </label>
+                  <input type="email" formControlName="email" placeholder="Contact Email" class="form-control" />
+                </div>
               </div>
-            </div>
-
+              <div class="container d-flex justify-content-center">
+                <button class="btn btn-danger mt-2" (click)="remove(i)" *ngIf="getContact.length>1">
+                  Delete
+                </button>
+              </div>
             </div>
           </ng-container>
+          <div class="button d-flex justify-content-center ">
+            <button class="btn btn-success mt-4" (click)="initContacts()">
+              Add
+            </button>
+          </div>
         </div>
         <div class="button">
           <button class="submit btn-primary mt-3"
           style="margin-right: 60px;
           border-radius: 30px;
-          width:120px" (click)="Adduser(userforms.value)">Add</button>
+          width:120px" (click)="Adduser(userforms.value)">Add User</button>
         </div>
       </form>
     </div>

@@ -34,15 +34,15 @@ export class CreateuserComponent implements OnInit {
 
   initform() {
     this.userforms = this.form.group({
-      name:[undefined, [Validators.required, Validators.maxLength(10),Validators.minLength(2)]],
+      name:[undefined, Validators.required],
       email:[undefined,Validators.required],
       dob:[undefined,Validators.required],
-      age:[undefined,Validators.required],
+      age:[undefined],
       password:[undefined,Validators.required],
       mobileNumber:[undefined,Validators.required],
       contacts: new FormArray([])
     });
-    this.initContacts;
+    this.initContacts();
   }
 
   get getContact(): FormArray {
@@ -53,17 +53,16 @@ export class CreateuserComponent implements OnInit {
     (this.userforms.get('contacts') as FormArray).push(
       this.form.group({
         mobileNumber:[undefined],
-        email:[undefined],
-        id:[undefined],
-        userid:[undefined]
+        email:[undefined]
       })
     )
   }
 
   Adduser(user:any){
+    console.log('hello', this.userforms.valid);
     if(this.userforms.valid){
       this.userserviceService.adduser(user).subscribe(
-        (response:any) =>{
+        (response:any) => {
           console.log(response);
           this.userforms.reset();
         },
@@ -72,6 +71,10 @@ export class CreateuserComponent implements OnInit {
         }
       );
     }
+  }
+
+  remove(i:number){
+    (this.userforms.get('contacts') as FormArray).removeAt(i);
   }
 
 }

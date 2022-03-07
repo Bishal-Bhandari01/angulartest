@@ -8,4 +8,7 @@ export class UserResponseModel{
   contacts: Array<Contacts> = [];
 }
 
-export class Contacts{}
+export class Contacts{
+  mobileNumber: string | undefined;
+  email: string | undefined;
+}
